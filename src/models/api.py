@@ -6,11 +6,19 @@ from functools import lru_cache
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s:%(levelname)s: %(message)s')
 
 
+def _load_data(file_name: str):
+    try:
+        clf = load(f'models/{file_name}')
+    except FileNotFoundError:
+        clf = load(f'src/models/{file_name}')
+    return clf
+
+
 @lru_cache(maxsize=None)
 def load_15_model():
     logging.info('Loading 15 model')
     try:
-        clf = load('models/15_min.joblib')
+        clf = _load_data('15_min.joblib')
         logging.info('Successfully loaded 15_min.joblib')
         return clf
     except FileNotFoundError:
@@ -24,7 +32,7 @@ def load_15_model():
 def load_20_model():
     logging.info('Loading 20 model')
     try:
-        clf = load('models/20_min.joblib')
+        clf = _load_data('20_min.joblib')
         logging.info('Successfully loaded 20_min.joblib')
         return clf
     except FileNotFoundError:
