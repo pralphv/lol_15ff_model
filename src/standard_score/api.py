@@ -13,7 +13,9 @@ def load_standard_score_15():
         logging.info('Successfully loaded 15_min.json')
         return standard_score
     except FileNotFoundError:
-        logging.error('Critical: 15_min.json not found')
+        error = 'Critical: 15_min.json not found'
+        logging.error(error)
+        raise FileNotFoundError(error)
 
 
 @lru_cache(maxsize=None)
@@ -24,4 +26,6 @@ def load_standard_score_20():
         logging.info('Successfully loaded 20_min.json')
         return standard_score
     except FileNotFoundError:
-        logging.error('Critical: 20_min.json not found')
+        error = 'Critical: 20_min.json not found'
+        logging.error(error)
+        raise FileNotFoundError(error)

@@ -10,6 +10,16 @@ except ImportError:
 
 app = Flask(__name__)
 
+# must be in this order
+FEATURES = [
+    'kda_diff',
+    'cs_diff',
+    'turrets_diff',
+    'inhibitors_diff',
+    'level_diff',
+    'monsters_diff'
+]
+
 
 def create_resp(status, msg):
     return jsonify({'status': status, 'msg': msg})
@@ -18,16 +28,6 @@ def create_resp(status, msg):
 @app.route('/')
 def landing_page():
     return make_response(create_resp('ok', 'online'), 200)
-
-
-features = [
-    'kda_diff',
-    'cs_diff',
-    'turrets_diff',
-    'inhibitors_diff',
-    'level_diff',
-    'monsters_diff'
-]
 
 
 def process_data(parameters, minute: int):
@@ -45,7 +45,7 @@ def process_data(parameters, minute: int):
     df_diff = df_100 - df_200
 
     df_diff.columns = map(lambda col_name: f'{col_name}_diff', df_diff.columns.values)
-    df_diff = df_diff[features]
+    df_diff = df_diff[FEATURES]
 
     if minute == 15:
         stats = load_standard_score_15()
@@ -60,22 +60,34 @@ def process_data(parameters, minute: int):
 @app.route('/api/15', methods=['POST'])
 def predict_15_min():
     parameters = request.json
-    df_diff = process_data(parameters, 15)
-    clf = load_15_model()
-    winning_team = clf.predict(df_diff)[0]
-    return make_response(create_resp('ok', {'winningTeam': winning_team}), 200)
+    try:
+        df_diff = process_data(parameters, 15)
+        clf = load_15_model()
+        winning_team = clf.predict(df_diff)[0]
+        return make_response(create_resp('ok', {'winningTeam': winning_team}), 200)
+    except FileNotFoundError:
+        return make_response(create_resp('error', 'server error'), 503)
+    except TypeError:
+        return make_response(create_resp('error', 'bad request'), 400)
+
 
 
 @app.route('/api/20', methods=['POST'])
 def predict_20_min():
     parameters = request.json
-    df_diff = process_data(parameters, 20)
-    clf = load_20_model()
-    winning_team = clf.predict(df_diff)[0]
-    return make_response(create_resp('ok', {'winningTeam': winning_team}), 200)
+    try:
+        df_diff = process_data(parameters, 20)
+        clf = load_20_model()
+        winning_team = clf.predict(df_diff)[0]
+        return make_response(create_resp('ok', {'winningTeam': winning_team}), 200)
+    except FileNotFoundError:
+        return make_response(create_resp('error', 'server error'), 503)
+    except TypeError:
+        return make_response(create_resp('error', 'bad request'), 400)
 
 
-@app.route('/api/required-format')
+
+@app.route('/api/required-format', methods=['GET'])
 def return_required_format():
     required_format = {
         "100": {
@@ -107,4 +119,4 @@ def return_required_format():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
