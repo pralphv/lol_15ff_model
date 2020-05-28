@@ -1,7 +1,7 @@
 # lol_15ff_model
 ### Description
 To provide an API that determines whether a player should surrender or not to save time.
-### Model Accuracy
+# Model 
 Uses SGD\
 15 min: ~76%\
 20 min: ~80%\
@@ -16,6 +16,7 @@ Features used in current model:
   'inhibitors_diff',
   'monsters_diff',
 ```
+# End Points
 ### api/15 or api/20
 POST Request
 ```
@@ -60,10 +61,11 @@ POST Response (error)
   "status": "error"
 }
 ```
-### Challenges
-Available game features are very correlated: More kills -> More CS, turrets, monsters\
-Some games are impossible to predict. Etc big throws\
-Some games are difficult to predict. Etc both team are performing very close and there is no clear distinction which team has the advantage
+# Challenges
+- Available game features are very correlated: More kills -> More CS, turrets, monsters\
+- Some games are impossible to predict. Etc big throws\
+- Some games are difficult to predict. Etc both team are performing very close and there is no clear distinction which team has the advantage
+# Model Attempts
 ### Attempt 1
 Method: Use each player's kda as features, etc player_1_kills, player_1_deaths...\
 Result: Does work, but not as good as consolidating into team kills
