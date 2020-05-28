@@ -45,15 +45,15 @@ POST Response (error)
 ```
 
 ### Attempt 1
-Method: Use each player's kda as features, etc player_1_kills, player_1_deaths...
+Method: Use each player's kda as features, etc player_1_kills, player_1_deaths...\
 Result: Does work, but not as good as consolidating into team kills
 ### Attempt 2
-Method: Use player's roles as features, etc TOP_SOLO_TEAM_100_kills, TOP_SOLO_TEAM_100_deaths...
+Method: Use player's roles as features, etc TOP_SOLO_TEAM_100_kills, TOP_SOLO_TEAM_100_deaths...\
 Result: Similar to Attempt 1
 ### Attempt 3
 Method: Add concept of early/late game champions. 
 ```
 delta = top_champion_win_rate_after_30_min - top_champion_win_rate_before_25_min
 ```
-delta as feature, as scaling for kda, or threshold for multiplier
+delta as feature, as scaling for kda, or threshold for multiplier\
 Result: All worse than just using consolidating team kda
