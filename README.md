@@ -16,6 +16,7 @@ Features used in current model:
   'monsters_diff',
 ```
 ## End Points
+Production site: https://lol-15ff-model.herokuapp.com/
 ### api/15 or api/20
 POST Request
 ```
