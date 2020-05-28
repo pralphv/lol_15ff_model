@@ -1,11 +1,11 @@
 # lol_15ff_model
 To provide an API that determines whether a player should surrender or not to save time.
 ## Model 
-Uses SGD\\
+Uses SGD\
 15 min: ~76%\
 20 min: ~80%\
-Main reason for high accuracy is that most games are landslide wins/losses.\\
-When team_kills + team_assists < 10, accuracy drops to ~68%\\
+Main reason for high accuracy is that most games are landslide wins/losses.\
+When team_kills + team_assists < 10, accuracy drops to ~68%\
 Features used in current model:
 ```
   'team_kda_diff',
