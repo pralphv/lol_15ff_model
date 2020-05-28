@@ -6,7 +6,16 @@ Uses SGD\
 15 min: ~76%\
 20 min: ~80%\
 Main reason for high accuracy is that most games are landslide wins/losses.\
-When team_kills + team_assists < 10, accuracy drops to ~68%
+When team_kills + team_assists < 10, accuracy drops to ~68%\
+Features used in current model:
+```
+  'team_kda_diff',
+  'team_cs_diff',
+  'team_level_diff',
+  'turrets_diff',
+  'inhibitors_diff',
+  'monsters_diff',
+```
 ### api/15 or api/20
 POST Request
 ```
