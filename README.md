@@ -1,6 +1,6 @@
 # lol_15ff_model
 To provide an API that determines whether a player should surrender or not to save time.
-# Model 
+## Model 
 Uses SGD\\
 15 min: ~76%\
 20 min: ~80%\
@@ -15,7 +15,7 @@ Features used in current model:
   'inhibitors_diff',
   'monsters_diff',
 ```
-# End Points
+## End Points
 ### api/15 or api/20
 POST Request
 ```
@@ -60,7 +60,7 @@ POST Response (error)
   "status": "error"
 }
 ```
-# Challenges
+## Challenges
 - Available game features are very correlated: More kills -> More CS, turrets, monsters
 - Some games are impossible to predict. Etc big throws
 - Some games are difficult to predict. Etc both team are performing very close and there is no clear distinction which team has the advantage
