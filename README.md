@@ -7,7 +7,7 @@ Uses SGD\
 20 min: ~80%\
 Main reason for high accuracy is that most games are landslide wins/losses.\
 When team_kills + team_assists < 10, accuracy drops to ~68%
-### api/15
+### api/15 or api/20
 POST Request
 ```
 {
