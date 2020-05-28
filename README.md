@@ -64,7 +64,7 @@ POST Response (error)
 - Available game features are very correlated: More kills -> More CS, turrets, monsters
 - Some games are impossible to predict. Etc big throws
 - Some games are difficult to predict. Etc both team are performing very close and there is no clear distinction which team has the advantage
-# Model Attempts
+## Model Attempts
 ### Attempt 1
 Method: Use each player's kda as features, etc player_1_kills, player_1_deaths...\
 Result: Does work, but not as good as consolidating into team kills
