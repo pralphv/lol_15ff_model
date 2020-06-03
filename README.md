@@ -78,4 +78,4 @@ Method: Add concept of early/late game champions.
 delta = top_champion_win_rate_after_30_min - top_champion_win_rate_before_25_min
 ```
 delta as feature, as scaling for kda, or threshold for multiplier\
-Result: All worse than just using consolidating team kda
+Result: All worse than just using consolidated team kda
